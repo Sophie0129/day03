@@ -1,0 +1,21 @@
+<h3>상품 목록</h3>
+
+<% console.log("ejs => ", list) %>
+<table border = "1">
+    <th>goods_id</th><th>title</th><th>price</th>
+    <th>amt</th><th>total</th>
+    <% list.forEach(list => { %>
+    <tr>
+        <td><%= list[i].goods_id> %></td>
+        <td><%= list[i].title> %></td>
+        <td><%= list[i].price> %></td>
+        <td><%= list[i].amt> %></td>
+        <td><%= list[i].total> %></td>
+    </tr>
+<% }) %>
+</table>
+id : <%= list.goods_id%>
+<a href="/cookie/cart">목록 이동</a>
+
+
+
