@@ -12,5 +12,6 @@ router.get("/cart", ctrl.cart );
 router.get("/save/:goods", ctrl.save );
 
 router.get("/view_list", ctrl.viewList );
+//router.get("/list_loginchk", ctrl.list_loginchk)
 
 module.exports = router;

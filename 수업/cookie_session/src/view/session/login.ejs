@@ -1,0 +1,14 @@
+<% console.log("username : ",username) %>
+<% if (username){ %> <!-- 다음과 같다 if(username != undefined)-->
+    <b><%= username %>님 로그인 상태</b>
+    <br>
+    <a href="/session/logout">로그아웃</a>
+    <a href="/session/success">성공페이지</a>
+<% }else { %>
+    <form action="/session/login_check" method="post">
+        <!--기본 메소드는 겟방식, 하지만 비밀 정보는 포스트를 쓴다-->
+        <input type="text" name="id"><br>
+        <input type="text" name="pwd"><br>
+        <input type="submit" value="로그인"><br>
+    </form>
+<% } %>

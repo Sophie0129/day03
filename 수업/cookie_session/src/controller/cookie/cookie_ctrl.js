@@ -1,4 +1,5 @@
 const config = require("../../../config/cookie_session/config");
+const db = require("../../db/session_mem");
 
 const cookieConfig = config.cookieConfig;
 
@@ -28,7 +29,12 @@ const makeCookie = (req, res) =>{
 const ser = require("../../service/cookie/cookie_service");
 
 const cart = (req, res) => {
+    console.log
+    if(req.session.username){
     res.render("cookie/cart", {list : ser.cart() });
+    }else{
+        res.redirect("/session/login")
+    }
 }
 const save = (req, res) => {
     const goods_id = req.params.goods;
@@ -58,5 +64,21 @@ const viewList = (req, res) => {
     }
     res.render("cookie/view_list", {list : cart_list} );
 }
+
+/*
+const list_loginchk = (req,res) => {
+    for(let i=0 ; i < db.length ; i++){
+    if(db[i].id === req.body.id && db[i].pwd === req.body['pwd']){
+        //req.session.username = DBId;
+        //req.session.nick = DBNick;
+        res.redirect("/session/success");
+    }else{
+    let msg = scriptMsg("로그인 먼저", "/session/login")
+    res.send(msg);
+    }
+}
+}
+*/
+
 module.exports = { viewList , save , cart , 
-    makeCookie, index , popup , cookie02 , popup02 };
+    makeCookie, index , popup , cookie02 , popup02};
